@@ -160,3 +160,34 @@ Stage Summary:
 - CORS/Cloudflare issue solved via server-side proxy
 - Booking form verified working end-to-end (200 response + success UI)
 - FormSubmit activation email will be sent on first submission — user needs to click confirm link once
+
+---
+Task ID: 18
+Agent: Main (Z.ai Code)
+Task: Make phone field compulsory (not optional) in both booking flows
+
+Work Log:
+- AI AGENT CHAT BOOKING FLOW (AIAgentWidget.tsx):
+  * Changed label from "Phone number (optional)?" → "What's your phone number?"
+  * Updated placeholder from "+1 555 000 0000" → "+92 321 380 9420" (matches agency phone)
+  * Changed validation: `if (!value && booking.step < 2) return;` (phone optional) → `if (!value) return;` (all fields required)
+  * Removed `'—'` fallback display for empty values
+  * Changed phone submission: `phone: booking.phone || 'Not provided'` → `phone: booking.phone` (no fallback since it's required)
+- MAIN BOOKING FORM (BookingForm.tsx):
+  * Changed label from "Phone" → "Phone *" (asterisk indicates required)
+  * Updated placeholder from "+1 555 000 0000" → "+92 321 380 9420"
+  * Added `required` attribute to the Input
+  * Updated validation: `if (!form.name || !form.email || !form.message)` → `if (!form.name || !form.email || !form.phone || !form.message)`
+  * Updated error toast: "Please fill in name, email, and message." → "Please fill in name, email, phone, and message."
+- VERIFIED via Agent Browser:
+  * AI agent booking flow: started booking → filled name → filled email → at phone step, tried pressing Enter with empty input → flow did NOT advance, submit button stayed DISABLED
+  * Filled phone number → flow advanced to service picker step ✅
+  * Main booking form: phone field shows "PHONE *" label with required attribute
+- LINT: 0 errors
+
+Stage Summary:
+- Phone is now compulsory in BOTH the AI agent chat booking flow AND the main booking form
+- Submit button is disabled until phone is entered (chat flow)
+- HTML5 required attribute added to booking form phone input
+- Validation updated to reject empty phone with clear toast message
+- Placeholder updated to show the agency's actual phone format (+92 321 380 9420)

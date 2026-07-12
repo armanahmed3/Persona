@@ -30,8 +30,8 @@ export default function BookingForm({ bookingFormRef }: { bookingFormRef?: React
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      toast.error('Please fill in name, email, and message.');
+    if (!form.name || !form.email || !form.phone || !form.message) {
+      toast.error('Please fill in name, email, phone, and message.');
       return;
     }
     setStatus('loading');
@@ -175,11 +175,12 @@ export default function BookingForm({ bookingFormRef }: { bookingFormRef?: React
                         className="bg-white/5 border-white/10 focus:border-violet-500"
                       />
                     </Field>
-                    <Field icon={Phone} label="Phone">
+                    <Field icon={Phone} label="Phone *">
                       <Input
                         value={form.phone}
                         onChange={(e) => update('phone', e.target.value)}
-                        placeholder="+1 555 000 0000"
+                        placeholder="+92 321 380 9420"
+                        required
                         className="bg-white/5 border-white/10 focus:border-violet-500"
                       />
                     </Field>

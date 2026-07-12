@@ -48,7 +48,7 @@ const INITIAL_BOOKING: BookingState = {
 const BOOKING_STEPS = [
   { key: 'name' as const, label: "What's your name?", placeholder: 'John Doe', icon: User, type: 'text' },
   { key: 'email' as const, label: "Best email to reach you?", placeholder: 'john@company.com', icon: Mail, type: 'email' },
-  { key: 'phone' as const, label: "Phone number (optional)?", placeholder: '+1 555 000 0000', icon: Phone, type: 'tel' },
+  { key: 'phone' as const, label: "What's your phone number?", placeholder: '+92 321 380 9420', icon: Phone, type: 'tel' },
 ];
 
 export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void }) {
@@ -99,7 +99,7 @@ export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void
 
   const submitBookingField = async () => {
     const value = bookingInput.trim();
-    if (!value && booking.step < 2) return; // phone optional
+    if (!value) return; // all fields including phone are required
 
     const step = BOOKING_STEPS[booking.step];
     const newBooking = { ...booking, [step.key]: value };
@@ -111,7 +111,7 @@ export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void
       setBooking({ ...newBooking, step: nextStep });
       setMessages((m) => [
         ...m,
-        { role: 'user', content: value || '—' },
+        { role: 'user', content: value },
         {
           role: 'assistant',
           content: `**Step ${nextStep + 1} of 5** — ${BOOKING_STEPS[nextStep].label}`,
@@ -123,7 +123,7 @@ export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void
       setBooking({ ...newBooking, step: 3 });
       setMessages((m) => [
         ...m,
-        { role: 'user', content: value || '—' },
+        { role: 'user', content: value },
         {
           role: 'assistant',
           content: '**Step 4 of 5** — Which service are you interested in? (pick below)',
@@ -167,7 +167,7 @@ export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void
         body: JSON.stringify({
           name: booking.name,
           email: booking.email,
-          phone: booking.phone || 'Not provided',
+          phone: booking.phone,
           company: '—',
           service: booking.service,
           budget: '—',
