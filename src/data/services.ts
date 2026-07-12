@@ -345,3 +345,361 @@ export const PROCESS_STEPS = [
     description: "We deploy, monitor, and optimize — then scale with data-driven growth experiments.",
   },
 ];
+
+// Why Choose Us features
+export const WHY_CHOOSE_US = [
+  {
+    icon: "Zap",
+    title: "Lightning Fast Delivery",
+    description: "MVPs shipped in weeks, not months. Our AI-augmented workflow cuts dev time by 60%.",
+  },
+  {
+    icon: "ShieldCheck",
+    title: "Enterprise-Grade Security",
+    description: "SOC2, GDPR, and zero-trust architecture baked into every project from day one.",
+  },
+  {
+    icon: "Sparkles",
+    title: "AI-First Engineering",
+    description: "Every product ships with AI built in — agents, automation, and intelligent UX.",
+  },
+  {
+    icon: "Globe",
+    title: "Truly Global Team",
+    description: "Follow-the-sun delivery across 3 continents. Someone is always working on your project.",
+  },
+  {
+    icon: "Award",
+    title: "Award-Winning Design",
+    description: "Awwwards, FWA, and CSS Design Awards — we build experiences that get recognized.",
+  },
+  {
+    icon: "TrendingUp",
+    title: "Measurable Results",
+    description: "Average 3.2x ROI for clients within 6 months of launch. Growth you can quantify.",
+  },
+];
+
+// Testimonials
+export const TESTIMONIALS = [
+  {
+    quote:
+      "Titech transformed our outdated platform into a cinematic 3D experience. Conversions jumped 240% in the first quarter. They don't just build websites — they build belief.",
+    name: "Sarah Mitchell",
+    role: "CEO, Lumen Finance",
+    location: "New York, US",
+    avatar: "SM",
+    rating: 5,
+  },
+  {
+    quote:
+      "The AI agent they built handles 80% of our customer queries autonomously. Our support costs dropped 65% while CSAT went UP. Unreal engineering.",
+    name: "James Okonkwo",
+    role: "CTO, Nebula Commerce",
+    location: "London, UK",
+    avatar: "JO",
+    rating: 5,
+  },
+  {
+    quote:
+      "We needed a Web3 marketplace live in 6 weeks. Titech delivered in 4 — with smart contracts, a stunning UI, and zero security issues on audit. Best agency in the Gulf.",
+    name: "Aisha Al-Rashid",
+    role: "Founder, BlockSouk",
+    location: "Dubai, UAE",
+    avatar: "AR",
+    rating: 5,
+  },
+  {
+    quote:
+      "Their Three.js work is on another planet. Our product configurator went viral on Twitter and drove 500K qualified visitors in a weekend.ROI was instant.",
+    name: "Marcus Chen",
+    role: "VP Product, Voltaic Motors",
+    location: "San Francisco, US",
+    avatar: "MC",
+    rating: 5,
+  },
+  {
+    quote:
+      "From discovery to launch, Titech felt like an extension of our team. The cinematic motion design alone closed our Series B round. Investors were stunned.",
+    name: "Priya Nair",
+    role: "COO, Helix Health",
+    location: "London, UK",
+    avatar: "PN",
+    rating: 5,
+  },
+  {
+    quote:
+      "The most professional agency I've worked with in 20 years. They delivered a multi-tenant SaaS with billing, dashboards, and AI analytics in 10 weeks. Flawless.",
+    name: "Khalid Mansoor",
+    role: "MD, Emirates Logistics",
+    location: "Dubai, UAE",
+    avatar: "KM",
+    rating: 5,
+  },
+];
+
+// Portfolio / Work showcase
+export const PORTFOLIO = [
+  {
+    id: "p1",
+    title: "Lumen Finance Platform",
+    category: "Fintech · Web App",
+    description: "3D investment dashboard with real-time AI market insights and predictive portfolio analytics.",
+    tags: ["Next.js", "Three.js", "AI", "Charts"],
+    image: "/ai-images/service-ai.png",
+    metric: "+240% conversions",
+  },
+  {
+    id: "p2",
+    title: "BlockSouk Marketplace",
+    category: "Web3 · dApp",
+    description: "NFT marketplace with smart contracts, wallet integration, and a stunning 3D product viewer.",
+    tags: ["Solidity", "React", "3D", "Web3"],
+    image: "/ai-images/service-blockchain.png",
+    metric: "$4.2M volume",
+  },
+  {
+    id: "p3",
+    title: "Voltaic Configurator",
+    category: "E-Commerce · 3D",
+    description: "Real-time EV configurator with WebGL rendering and instant price calculations.",
+    tags: ["Three.js", "R3F", "GSAP", "Commerce"],
+    image: "/ai-images/service-3d.png",
+    metric: "500K visitors",
+  },
+  {
+    id: "p4",
+    title: "Helix Health Suite",
+    category: "SaaS · Healthcare",
+    description: "Multi-tenant healthcare SaaS with AI diagnostics assistant and HIPAA-compliant architecture.",
+    tags: ["Next.js", "AI", "SaaS", "Multi-tenant"],
+    image: "/ai-images/service-cloud.png",
+    metric: "Series B closed",
+  },
+  {
+    id: "p5",
+    title: "Nebula Commerce AI",
+    category: "AI · Retail",
+    description: "Autonomous customer service agent handling 80% of queries with RAG over product catalog.",
+    tags: ["LLM", "RAG", "Voice AI", "Automation"],
+    image: "/ai-images/service-ai.png",
+    metric: "-65% support cost",
+  },
+  {
+    id: "p6",
+    title: "Emirates Logistics OS",
+    category: "Enterprise · Dashboard",
+    description: "Logistics command center with live fleet tracking, predictive ETAs, and AI route optimization.",
+    tags: ["Dashboard", "Real-time", "AI", "Maps"],
+    image: "/ai-images/service-web.png",
+    metric: "10-week delivery",
+  },
+];
+
+// Pricing packages
+export const PRICING = [
+  {
+    name: "Launch",
+    tagline: "For startups validating an idea",
+    price: "$4,900",
+    period: "/ project",
+    popular: false,
+    features: [
+      "5-page cinematic website",
+      "Mobile-responsive design",
+      "Basic AI chatbot integration",
+      "Contact form + CRM setup",
+      "SEO foundation",
+      "2 rounds of revisions",
+      "14-day delivery",
+      "30 days post-launch support",
+    ],
+    cta: "Start with Launch",
+  },
+  {
+    name: "Scale",
+    tagline: "For growing brands going premium",
+    price: "$14,900",
+    period: "/ project",
+    popular: true,
+    features: [
+      "Full 3D animated website",
+      "Custom AI agent (z.ai powered)",
+      "Headless CMS integration",
+      "Advanced animations (GSAP + R3F)",
+      "E-commerce / booking system",
+      "Analytics dashboard",
+      "Unlimited revisions (fair use)",
+      "30-day delivery",
+      "90 days post-launch support",
+    ],
+    cta: "Choose Scale",
+  },
+  {
+    name: "Enterprise",
+    tagline: "For industry leaders & complex builds",
+    price: "Custom",
+    period: "/ quote",
+    popular: false,
+    features: [
+      "Multi-platform (web + mobile + AI)",
+      "Dedicated engineering team",
+      "Custom 3D / WebGL experiences",
+      "Multi-tenant SaaS architecture",
+      "Advanced AI (RAG, vision, voice)",
+      "Cloud + DevOps + security audits",
+      "SLA & dedicated success manager",
+      "60-90 day delivery",
+      "12 months priority support",
+    ],
+    cta: "Talk to Sales",
+  },
+];
+
+// FAQ
+export const FAQ = [
+  {
+    q: "What makes Titech Agency different from other digital agencies?",
+    a: "Three things: (1) We're AI-first — every project ships with intelligent automation built in. (2) We engineer cinematic 3D experiences using Three.js, R3F, and GSAP that most agencies can't. (3) We operate across US, UK, and UAE with follow-the-sun delivery, so your project moves 24/7.",
+  },
+  {
+    q: "How much does a typical project cost?",
+    a: "Pricing is project-based and depends on scope. Our Launch package starts at $4,900 for a cinematic website, the Scale package is $14,900 for full 3D + AI, and Enterprise is custom-quoted for complex multi-platform builds. Book a free consultation and we'll tailor a quote within 24 hours.",
+  },
+  {
+    q: "How long does delivery take?",
+    a: "Launch websites ship in 14 days, Scale projects in 30 days, and Enterprise builds in 60–90 days depending on complexity. Our AI-augmented workflow cuts traditional timelines by ~60%, so you launch faster without compromising quality.",
+  },
+  {
+    q: "Do you work with clients outside the US, UK, and UAE?",
+    a: "Absolutely. While we have physical offices in New York, London, and Dubai, we've delivered projects for clients in 40+ countries. Our remote-first process and async communication tools make timezone differences a non-issue.",
+  },
+  {
+    q: "Can you integrate AI into our existing product?",
+    a: "Yes — that's one of our specialties. We build custom AI agents, RAG pipelines, computer vision systems, and voice AI on top of existing platforms. We use the z.ai SDK as our primary engine, with OpenRouter and NVIDIA NIM as automatic fallbacks for maximum uptime.",
+  },
+  {
+    q: "What happens after launch?",
+    a: "Every package includes post-launch support (30 days for Launch, 90 for Scale, 12 months for Enterprise). We also offer ongoing growth retainers covering SEO, CRO, performance monitoring, and feature iterations. We're in it for the long haul.",
+  },
+  {
+    q: "Do you sign NDAs and handle sensitive data?",
+    a: "Always. We sign NDAs before any discovery call, follow SOC2 and GDPR practices, and implement zero-trust architecture on every project. Your IP and data security are non-negotiable for us.",
+  },
+  {
+    q: "What is your tech stack?",
+    a: "Frontend: Next.js 16, React 19, TypeScript, Tailwind CSS 4, shadcn/ui. 3D & Animation: Three.js, React Three Fiber, PixiJS, Babylon.js, GSAP, Framer Motion, Spline, WebGL, GLSL. AI: z.ai SDK, OpenRouter, NVIDIA NIM. Backend: Prisma ORM, Node.js, serverless. Cloud: AWS, GCP, Azure with Kubernetes and Terraform.",
+  },
+];
+
+// Team members
+export const TEAM = [
+  {
+    name: "Daniel Reyes",
+    role: "Founder & CEO",
+    bio: "Ex-Google, 15+ years scaling digital products. Leads strategy across all 3 regions.",
+    avatar: "DR",
+    color: "from-violet-500 to-fuchsia-500",
+    socials: { twitter: "#", linkedin: "#" },
+  },
+  {
+    name: "Amira Hassan",
+    role: "Chief Design Officer",
+    bio: "Awwwards-winning designer. Former Lead at Figma. Obsessed with cinematic motion.",
+    avatar: "AH",
+    color: "from-cyan-400 to-blue-500",
+    socials: { twitter: "#", linkedin: "#" },
+  },
+  {
+    name: "Tomás Whitfield",
+    role: "CTO & Head of Engineering",
+    bio: "Built systems serving 50M+ users. Three.js core contributor. AI architecture specialist.",
+    avatar: "TW",
+    color: "from-emerald-400 to-cyan-500",
+    socials: { twitter: "#", linkedin: "#" },
+  },
+  {
+    name: "Leila Park",
+    role: "VP, AI Research",
+    bio: "PhD ML Stanford. Previously NVIDIA. Leads our z.ai / OpenRouter / NIM agent platform.",
+    avatar: "LP",
+    color: "from-fuchsia-500 to-pink-500",
+    socials: { twitter: "#", linkedin: "#" },
+  },
+  {
+    name: "Omar Siddiqui",
+    role: "Director, MENA Region",
+    bio: "Based in Dubai. 12 years scaling enterprise in the Gulf. Heads our UAE office.",
+    avatar: "OS",
+    color: "from-amber-400 to-orange-500",
+    socials: { twitter: "#", linkedin: "#" },
+  },
+  {
+    name: "Eleanor Vance",
+    role: "Head of Client Success",
+    bio: "Based in London. Ensures every project ships on time, on budget, and beyond expectations.",
+    avatar: "EV",
+    color: "from-indigo-400 to-violet-500",
+    socials: { twitter: "#", linkedin: "#" },
+  },
+];
+
+// Blog / insights
+export const BLOG_POSTS = [
+  {
+    id: "b1",
+    title: "Why 3D Web Experiences Convert 3x Better Than Flat Sites",
+    excerpt:
+      "We analyzed 200 client launches and found a consistent pattern: immersive 3D drives engagement, retention, and conversion. Here's the data.",
+    category: "Design",
+    readTime: "6 min read",
+    date: "Nov 18, 2025",
+    image: "/ai-images/service-3d.png",
+  },
+  {
+    id: "b2",
+    title: "Building Production AI Agents with z.ai, OpenRouter & NVIDIA",
+    excerpt:
+      "A deep dive into our 3-tier fallback architecture that keeps Titech's AI agents online 99.99% of the time. Code included.",
+    category: "AI",
+    readTime: "9 min read",
+    date: "Nov 12, 2025",
+    image: "/ai-images/service-ai.png",
+  },
+  {
+    id: "b3",
+    title: "The Cinematic Web: GSAP + R3F Techniques That Wow Users",
+    excerpt:
+      "Scroll-triggered animations, shader transitions, and camera choreography — the techniques behind award-winning sites.",
+    category: "Engineering",
+    readTime: "7 min read",
+    date: "Nov 5, 2025",
+    image: "/ai-images/service-web.png",
+  },
+];
+
+// Client logos (text-based for marquee)
+export const CLIENTS = [
+  "Lumen Finance",
+  "BlockSouk",
+  "Voltaic Motors",
+  "Helix Health",
+  "Nebula Commerce",
+  "Emirates Logistics",
+  "Quantum Labs",
+  "Aether Studios",
+  "Vertex Capital",
+  "Solace AI",
+  "Pinnacle Retail",
+  "Meridian Cloud",
+];
+
+// Awards & recognition
+export const AWARDS = [
+  { name: "Awwwards", count: 12, label: "Site of the Day" },
+  { name: "FWA", count: 8, label: "Site of the Day" },
+  { name: "CSS Design Awards", count: 15, label: "Website of the Day" },
+  { name: "Webby Awards", count: 5, label: "Honoree" },
+  { name: "Communicator Awards", count: 7, label: "Gold Winner" },
+  { name: "Clutch Global", count: 1, label: "Top 1% Agency" },
+];
