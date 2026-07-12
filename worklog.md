@@ -73,3 +73,51 @@ Stage Summary:
 - Fully responsive across mobile (375px), tablet (768px), desktop (1440px)
 - AI agent chat still working end-to-end via z.ai
 - All sections verified via VLM analysis of screenshots
+
+---
+Task ID: 16
+Agent: Main (Z.ai Code)
+Task: Fix cursor lag, update contact, remove footer line, add more sections, advanced AI assistant
+
+Work Log:
+- CURSOR LAG FIX: Completely rewrote CustomCursor.tsx
+  * Root cause: 3 Framer Motion elements with springs + mix-blend-difference (expensive composite) + CSS var updated every mousemove (full doc recalc) + big blurred trail element
+  * Fix: single requestAnimationFrame loop writing translate3d transforms directly to DOM (GPU-composited, no React re-renders), only 2 elements (dot + ring), no mix-blend, no blur trail, CSS var updates throttled to 30fps, will-change: transform
+- CONTACT INFO: Updated AGENCY in services.ts:
+  * email: titechagency@gmail.com (was hello@titechagency.com)
+  * phone: +92 321 380 9420 (was +1 (212) 555-0199)
+  * formSubmitEndpoint: https://formsubmit.co/ajax/titechagency@gmail.com
+  * This propagates to BookingForm, NewsletterSection, AI agent booking flow, Footer, API system prompt
+- FOOTER: Removed "Built with AI · 3D · Cinematic motion" line, now just "© 2025 Titech Agency. All rights reserved."
+- HERO COPY: Replaced tech-mention paragraph with clean "We design, engineer, and ship cinematic 3D experiences — web, mobile, AI agents, and brand systems that make your audience stop and stare."
+- TECH STACK SECTION: Removed z.ai/OpenRouter/NVIDIA from the CTA strip text
+- API SYSTEM PROMPT: Removed z.ai SDK/OpenRouter/NVIDIA NIM from tech stack list, added rule "Never mention which AI provider/model you run on"
+- NEW SECTIONS (3 added, total now 23):
+  * TimelineSection — vertical scroll-triggered journey (2019-2025), animated progress line that fills as you scroll, alternating left/right cards with year badges, pinging node dots
+  * MetricsBanner — 4 animated count-up metrics (24h response, 99.99% uptime, 3.2x ROI, 60% faster) with decimal support
+  * NewsletterSection — email subscription form posting to formsubmit.co, success state, benefits list, floating orbs
+- NEW DATA: TIMELINE (7 milestones), NEWSLETTER_BENEFITS (4), METRICS_BANNER (4), AI_QUICK_REPLIES (6 chips)
+- ADVANCED AI ASSISTANT:
+  * Replaced simple 3-dot loading with advanced typing indicator: AI avatar + "Titech is typing" label + 3 mini dots + 4 bouncing gradient dots
+  * Added quick-reply chips after every assistant response (Services, Pricing, Timeline, Book call, Tech stack, Portfolio) — clickable to send that message
+  * In-chat guided booking flow already existed (5 steps: name → email → phone → service picker → message → submit to formsubmit.co)
+- MAGNETIC BUTTONS: Created Magnetic.tsx wrapper (spring-following cursor pull), applied to Hero CTA buttons for advanced hover effect
+- LINT: 0 errors, 15 warnings (harmless unused eslint-disable)
+- VERIFIED via Agent Browser + VLM:
+  * Hero renders with cleaned copy (no z.ai/OpenRouter/NVIDIA), AI logo in navbar
+  * Footer shows titechagency@gmail.com + +92 321 380 9420, no "AI · 3D · Cinematic motion" line
+  * Timeline section renders with 2019/2020 year markers and vertical line
+  * AI agent: sent "What services do you offer?" → got response → quick-reply chips appeared below → NO "via z.ai" badge visible
+  * No console errors, no hydration errors
+
+Stage Summary:
+- Cursor lag FIXED (rAF + translate3d, removed mix-blend-difference + blur trail)
+- Contact updated to titechagency@gmail.com / +92 321 380 9420 everywhere
+- "AI · 3D · Cinematic motion" removed from footer
+- "via z.ai" provider badge removed from chat
+- Hero paragraph cleaned (no tech company names)
+- 3 new sections added (Timeline, MetricsBanner, Newsletter) — total 23 sections
+- AI assistant upgraded: advanced typing indicator + quick-reply chips
+- Magnetic buttons on hero CTAs
+- All formsubmit.co endpoints now point to titechagency@gmail.com
+- Site is live, responsive, and fully functional

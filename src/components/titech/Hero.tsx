@@ -4,6 +4,7 @@ import { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Magnetic from './Magnetic';
 
 const Hero3D = lazy(() => import('./Hero3D'));
 
@@ -75,30 +76,34 @@ export default function Hero({ onBookClick }: { onBookClick: () => void }) {
             variants={item}
             className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed"
           >
-            Titech Agency fuses <span className="text-foreground font-medium">AI, 3D, and cinematic motion</span> to ship
-            unbelievable web, mobile, and brand experiences. Powered by Three.js, R3F, GSAP, z.ai, OpenRouter & NVIDIA.
+            We design, engineer, and ship <span className="text-foreground font-medium">cinematic 3D experiences</span> —
+            web, mobile, AI agents, and brand systems that make your audience stop and stare.
           </motion.p>
 
           <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
-            <Button
-              onClick={onBookClick}
-              size="lg"
-              className="group bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white border-0 glow-violet h-14 px-8 text-base"
-            >
-              <Sparkles className="w-5 h-5 mr-2" />
-              Book an Appointment
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <a href="#services">
+            <Magnetic strength={0.3}>
               <Button
+                onClick={onBookClick}
                 size="lg"
-                variant="outline"
-                className="h-14 px-8 text-base border-white/20 bg-white/5 backdrop-blur hover:bg-white/10"
+                className="group bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white border-0 glow-violet h-14 px-8 text-base"
               >
-                <Play className="w-4 h-4 mr-2" />
-                Explore Services
+                <Sparkles className="w-5 h-5 mr-2" />
+                Book an Appointment
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
               </Button>
-            </a>
+            </Magnetic>
+            <Magnetic strength={0.25}>
+              <a href="#services">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-14 px-8 text-base border-white/20 bg-white/5 backdrop-blur hover:bg-white/10"
+                >
+                  <Play className="w-4 h-4 mr-2" />
+                  Explore Services
+                </Button>
+              </a>
+            </Magnetic>
           </motion.div>
 
           {/* Quick stats strip */}

@@ -38,9 +38,14 @@ export default function Navbar({ onBookClick }: { onBookClick: () => void }) {
       <nav className="container mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#top" className="flex items-center gap-2.5 group">
-          <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-cyan-400 opacity-50 blur-md group-hover:opacity-80 transition-opacity" />
-            <Sparkles className="w-5 h-5 text-white relative z-10" />
+          <div className="relative w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center group-hover:glow-violet transition-all">
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 opacity-60 group-hover:opacity-90 blur-md transition-opacity" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/ai-images/logo-titech.png"
+              alt="Titech Agency Logo"
+              className="w-full h-full object-cover relative z-10"
+            />
           </div>
           <div className="flex flex-col leading-none">
             <span className="font-[family-name:var(--font-syne)] text-lg font-extrabold tracking-tight">

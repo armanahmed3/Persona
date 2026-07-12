@@ -58,8 +58,8 @@ export default function TechStackSection() {
             unbelievable, fully-animated experiences.
           </p>
           <p className="text-sm text-muted-foreground mt-2">
-            z.ai SDK · OpenRouter · NVIDIA NIM · Three.js · R3F · PixiJS · Babylon.js · GSAP · Framer Motion · Spline ·
-            WebFlow · Framer · WebGL · GLSL · 21st.dev · UI/UX Pro Max
+            Three.js · R3F · PixiJS · Babylon.js · GSAP · Framer Motion · Spline · WebFlow · Framer · WebGL · GLSL ·
+            21st.dev · UI/UX Pro Max · Next.js 16 · Tailwind 4 · shadcn/ui · Prisma
           </p>
         </motion.div>
       </div>

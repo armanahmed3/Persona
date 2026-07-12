@@ -305,9 +305,9 @@ export const AGENCY = {
     { value: 15, suffix: "+", label: "Industries Served" },
     { value: 40, suffix: "+", label: "Expert Engineers" },
   ],
-  email: "hello@titechagency.com",
-  phone: "+1 (212) 555-0199",
-  formSubmitEndpoint: "https://formsubmit.co/ajax/hello@titechagency.com",
+  email: "titechagency@gmail.com",
+  phone: "+92 321 380 9420",
+  formSubmitEndpoint: "https://formsubmit.co/ajax/titechagency@gmail.com",
 };
 
 // Social media links
@@ -703,3 +703,151 @@ export const AWARDS = [
   { name: "Communicator Awards", count: 7, label: "Gold Winner" },
   { name: "Clutch Global", count: 1, label: "Top 1% Agency" },
 ];
+
+// Skills cloud — comprehensive capabilities
+export const SKILLS_CLOUD = [
+  { name: "React", level: 98, category: "Frontend" },
+  { name: "Next.js 16", level: 96, category: "Frontend" },
+  { name: "TypeScript", level: 97, category: "Language" },
+  { name: "Three.js", level: 94, category: "3D" },
+  { name: "React Three Fiber", level: 92, category: "3D" },
+  { name: "WebGL", level: 88, category: "3D" },
+  { name: "GLSL Shaders", level: 84, category: "3D" },
+  { name: "GSAP", level: 95, category: "Animation" },
+  { name: "Framer Motion", level: 96, category: "Animation" },
+  { name: "PixiJS", level: 82, category: "2D" },
+  { name: "Babylon.js", level: 80, category: "3D" },
+  { name: "Spline", level: 88, category: "3D Design" },
+  { name: "Tailwind CSS 4", level: 98, category: "Styling" },
+  { name: "shadcn/ui", level: 96, category: "UI Kit" },
+  { name: "Figma", level: 94, category: "Design" },
+  { name: "Blender", level: 80, category: "3D Modeling" },
+  { name: "Node.js", level: 95, category: "Backend" },
+  { name: "Prisma ORM", level: 93, category: "Database" },
+  { name: "PostgreSQL", level: 90, category: "Database" },
+  { name: "Redis", level: 85, category: "Caching" },
+  { name: "GraphQL", level: 88, category: "API" },
+  { name: "tRPC", level: 86, category: "API" },
+  { name: "Python", level: 89, category: "Language" },
+  { name: "LLM Engineering", level: 94, category: "AI" },
+  { name: "RAG Pipelines", level: 91, category: "AI" },
+  { name: "Computer Vision", level: 86, category: "AI" },
+  { name: "Prompt Engineering", level: 95, category: "AI" },
+  { name: "OpenAI APIs", level: 93, category: "AI" },
+  { name: "LangChain", level: 87, category: "AI" },
+  { name: "Vector DBs", level: 85, category: "AI" },
+  { name: "React Native", level: 89, category: "Mobile" },
+  { name: "Flutter", level: 84, category: "Mobile" },
+  { name: "Swift", level: 78, category: "Mobile" },
+  { name: "Kotlin", level: 76, category: "Mobile" },
+  { name: "AWS", level: 91, category: "Cloud" },
+  { name: "GCP", level: 87, category: "Cloud" },
+  { name: "Azure", level: 85, category: "Cloud" },
+  { name: "Kubernetes", level: 86, category: "DevOps" },
+  { name: "Docker", level: 92, category: "DevOps" },
+  { name: "Terraform", level: 84, category: "DevOps" },
+  { name: "CI/CD", level: 90, category: "DevOps" },
+  { name: "Solidity", level: 78, category: "Web3" },
+  { name: "Ethereum", level: 80, category: "Web3" },
+  { name: "Solana", level: 75, category: "Web3" },
+  { name: "SEO", level: 90, category: "Marketing" },
+  { name: "Analytics", level: 88, category: "Marketing" },
+  { name: "CRO", level: 86, category: "Marketing" },
+];
+
+// Comparison: Titech vs typical agencies
+export const COMPARISON = [
+  { feature: "AI-first engineering (every project)", titech: true, others: false },
+  { feature: "Cinematic 3D / WebGL experiences", titech: true, others: false },
+  { feature: "Follow-the-sun delivery (3 continents)", titech: true, others: false },
+  { feature: "Custom AI agents with 3-tier fallback", titech: true, others: false },
+  { feature: "Award-winning design team", titech: true, others: "sometimes" },
+  { feature: "Source code ownership", titech: true, others: "sometimes" },
+  { feature: "NDA + SOC2 + GDPR compliance", titech: true, others: "sometimes" },
+  { feature: "Post-launch support included", titech: true, others: false },
+  { feature: "Transparent fixed pricing", titech: true, others: false },
+  { feature: "Senior engineers only (no juniors)", titech: true, others: false },
+];
+
+// Capability deep-dive metrics
+export const CAPABILITIES = [
+  { label: "Frontend Engineering", value: 98, color: "#a855f7" },
+  { label: "3D / WebGL / Shaders", value: 94, color: "#22d3ee" },
+  { label: "AI / ML / LLMs", value: 96, color: "#ec4899" },
+  { label: "Mobile Development", value: 89, color: "#f59e0b" },
+  { label: "Cloud / DevOps", value: 92, color: "#10b981" },
+  { label: "UI/UX Design", value: 95, color: "#8b5cf6" },
+];
+
+// Tech timeline — milestones of our journey
+export const TIMELINE = [
+  {
+    year: "2019",
+    title: "The Spark",
+    description: "Founded in a New York loft by 3 engineers obsessed with the cinematic web.",
+    milestone: "First client shipped",
+  },
+  {
+    year: "2020",
+    title: "London Expansion",
+    description: "Opened our UK studio. First Awwwards Site of the Day.",
+    milestone: "Team grew to 12",
+  },
+  {
+    year: "2021",
+    title: "AI Practice Born",
+    description: "Launched our AI division — first custom GPT-powered chatbot shipped to production.",
+    milestone: "50+ projects",
+  },
+  {
+    year: "2022",
+    title: "Dubai HQ",
+    description: "Established MENA headquarters in Burj Khalifa. Enterprise clients onboarded.",
+    milestone: "$5M revenue",
+  },
+  {
+    year: "2023",
+    title: "3D Web Renaissance",
+    description: "Pioneered cinematic Three.js + R3F experiences. 3 FWA awards.",
+    milestone: "150+ projects",
+  },
+  {
+    year: "2024",
+    title: "Multi-Model AI",
+    description: "Built our 3-tier fallback AI agent platform (primary + OpenRouter + NVIDIA).",
+    milestone: "99.99% uptime",
+  },
+  {
+    year: "2025",
+    title: "The Cinematic Web",
+    description: "Shipping fully-animated, AI-generated, 4D-feel experiences at scale.",
+    milestone: "250+ projects",
+  },
+];
+
+// Newsletter benefits
+export const NEWSLETTER_BENEFITS = [
+  "Monthly insights on AI, 3D, and the cinematic web",
+  "Early access to our open-source experiments",
+  "Exclusive case studies not published elsewhere",
+  "Zero spam. Unsubscribe anytime.",
+];
+
+// Quick stats for the interactive metrics banner
+export const METRICS_BANNER = [
+  { value: 24, suffix: "h", label: "Avg response time" },
+  { value: 99.99, suffix: "%", label: "AI agent uptime", decimals: 2 },
+  { value: 3.2, suffix: "x", label: "Avg client ROI", decimals: 1 },
+  { value: 60, suffix: "%", label: "Faster delivery", decimals: 0 },
+];
+
+// AI agent quick-reply chips (advanced assistant UX)
+export const AI_QUICK_REPLIES = [
+  { label: "Services", message: "What services do you offer?" },
+  { label: "Pricing", message: "How much does a project cost?" },
+  { label: "Timeline", message: "How long does delivery take?" },
+  { label: "Book call", message: "I want to book an appointment" },
+  { label: "Tech stack", message: "What's your tech stack?" },
+  { label: "Portfolio", message: "Show me your recent work" },
+];
+
