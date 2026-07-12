@@ -31,6 +31,7 @@ import BookingForm from '@/components/titech/BookingForm';
 import TimelineSection from '@/components/titech/TimelineSection';
 import MetricsBanner from '@/components/titech/MetricsBanner';
 import NewsletterSection from '@/components/titech/NewsletterSection';
+import ProjectsSection from '@/components/titech/ProjectsSection';
 
 // Load AI agent widget only on client (avoids SSR issues)
 const AIAgentWidget = dynamic(() => import('@/components/titech/AIAgentWidget'), {
@@ -71,6 +72,9 @@ export default function Home() {
 
         {/* 6. Portfolio showcase with filter + 3D tilt */}
         <PortfolioSection />
+
+        {/* 6b. Massive projects universe — 50 categories, 5000+ projects */}
+        <ProjectsSection />
 
         {/* 7. Tech stack marquee */}
         <TechStackSection />

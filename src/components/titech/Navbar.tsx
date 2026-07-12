@@ -8,6 +8,7 @@ import { AGENCY } from '@/data/services';
 
 const NAV_LINKS = [
   { label: 'Services', href: '#services' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Work', href: '#work' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'Team', href: '#team' },

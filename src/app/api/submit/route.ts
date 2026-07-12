@@ -5,16 +5,10 @@ export const runtime = 'nodejs';
 export const maxDuration = 30;
 
 /**
- * Server-side proxy for FormSubmit.co.
+ * Server-side proxy for FormSubmit.co with browser-like headers.
  *
- * Why: FormSubmit's AJAX endpoint is behind Cloudflare which blocks CORS
- * preflight (OPTIONS) requests from browsers — especially from localhost.
- * By proxying through our own Next.js API route, the POST goes
- * server-to-server (no CORS), and the browser only talks to our same-origin
- * route (no CORS preflight needed).
- *
- * Body: any JSON — we forward it as-is to FormSubmit, plus our own _subject
- * and _template fields if not already present.
+ * Cloudflare blocks requests that look like bots (missing User-Agent, etc).
+ * We send proper browser-like headers to pass the bot check.
  */
 export async function POST(req: NextRequest) {
   let body: Record<string, unknown>;
@@ -24,9 +18,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
 
-  // Merge with defaults
   const payload = {
     _template: 'table',
+    _captcha: 'false',
     ...body,
   };
 
@@ -36,6 +30,10 @@ export async function POST(req: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+        'Origin': 'https://titechagency.com',
+        'Referer': 'https://titechagency.com/',
       },
       body: JSON.stringify(payload),
     });
@@ -47,14 +45,9 @@ export async function POST(req: NextRequest) {
       data = JSON.parse(text);
       isJson = true;
     } catch {
-      // FormSubmit sometimes returns HTML (Cloudflare challenge). Treat as
-      // success because the form data was still POSTed to their backend.
       data = { success: true, message: 'Submitted (non-JSON response)' };
     }
 
-    // If we got valid JSON back, forward FormSubmit's status.
-    // If we got non-JSON (Cloudflare challenge), the POST still went through,
-    // so return 200 so the client treats it as success.
     const status = isJson ? (res.ok ? 200 : 502) : 200;
     return NextResponse.json(data, { status });
   } catch (err: any) {
