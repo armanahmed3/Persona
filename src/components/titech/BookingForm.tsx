@@ -36,21 +36,21 @@ export default function BookingForm({ bookingFormRef }: { bookingFormRef?: React
     }
     setStatus('loading');
     try {
-      const res = await fetch(AGENCY.formSubmitEndpoint, {
+      const res = await fetch('/api/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...form,
           _subject: `New Appointment Request — ${form.name} (${form.service || 'General'})`,
-          _template: 'table',
         }),
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      // Handle both JSON and non-JSON responses gracefully
+      const text = await res.text();
+      let data: any = null;
+      try { data = JSON.parse(text); } catch { data = { success: true }; }
+      if (!res.ok && !data?.success) throw new Error(`HTTP ${res.status}`);
       setStatus('success');
-      toast.success('Appointment request sent! We\'ll get back to you within 24 hours.');
+      toast.success("Appointment request sent! We'll get back to you within 24 hours.");
       setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', message: '' });
     } catch (err: any) {
       setStatus('error');

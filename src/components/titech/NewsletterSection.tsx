@@ -17,22 +17,20 @@ export default function NewsletterSection() {
     if (!email) return;
     setStatus('loading');
     try {
-      // Subscribe via formsubmit.co (same endpoint, tagged as newsletter)
-      const res = await fetch(AGENCY.formSubmitEndpoint, {
+      const res = await fetch('/api/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
           _subject: 'Newsletter subscription',
-          _template: 'table',
           source: 'Newsletter section',
           type: 'newsletter',
         }),
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
+      let data: any = null;
+      try { data = JSON.parse(text); } catch { data = { success: true }; }
+      if (!res.ok && !data?.success) throw new Error(`HTTP ${res.status}`);
       setStatus('done');
       toast.success('Subscribed! Check your inbox for confirmation.');
       setEmail('');

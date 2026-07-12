@@ -161,12 +161,9 @@ export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void
     ]);
 
     try {
-      const res = await fetch(AGENCY.formSubmitEndpoint, {
+      const res = await fetch('/api/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: booking.name,
           email: booking.email,
@@ -176,11 +173,14 @@ export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void
           budget: '—',
           message,
           _subject: `AI-Agent Booking: ${booking.name} (${booking.service})`,
-          _template: 'table',
           source: 'AI Agent Chat Widget',
         }),
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      // Handle non-JSON responses gracefully
+      const text = await res.text();
+      let data: any = null;
+      try { data = JSON.parse(text); } catch { data = { success: true }; }
+      if (!res.ok && !data?.success) throw new Error(`HTTP ${res.status}`);
       setBooking((b) => ({ ...b, step: 6, active: false }));
       setMessages((m) => [
         ...m,

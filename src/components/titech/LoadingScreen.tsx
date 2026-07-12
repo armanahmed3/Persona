@@ -44,6 +44,7 @@ export default function LoadingScreen() {
           exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-background overflow-hidden"
+          style={{ backgroundColor: '#0a0712' }}
         >
           {/* Animated background grid */}
           <div className="absolute inset-0 grid-bg opacity-30" />
