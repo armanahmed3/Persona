@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Loader2, Send, CheckCircle2, Calendar, User, Mail, Phone, MessageSquare, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { toast } from 'sonner';
 import { AGENCY, SERVICES } from '@/data/services';
 import { SectionHeading } from './SectionHeading';
+import { submitToFormSubmit } from './submitForm';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
@@ -25,9 +26,6 @@ export default function BookingForm({ bookingFormRef }: { bookingFormRef?: React
     budget: '',
     message: '',
   });
-  const formRef = useRef<HTMLFormElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const update = (k: keyof typeof form, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
@@ -39,59 +37,25 @@ export default function BookingForm({ bookingFormRef }: { bookingFormRef?: React
     }
     setStatus('loading');
 
-    // HYBRID APPROACH: Submit via BOTH methods for maximum reliability.
-    // Method 1: Hidden HTML form POST to iframe (works in real browsers, bypasses CORS)
-    // Method 2: Server-side proxy with browser-like headers (backup)
-    // At least one should get through to FormSubmit.
+    // Submit via standard FormSubmit endpoint (hidden form POST)
+    // Uses: https://formsubmit.co/titechagency@gmail.com
+    await submitToFormSubmit(
+      {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        company: form.company || '—',
+        service: form.service || 'General',
+        budget: form.budget || '—',
+        message: form.message,
+        _subject: `New Appointment Request — ${form.name} (${form.service || 'General'})`,
+      },
+      AGENCY.email
+    );
 
-    const submitData: Record<string, string> = {
-      name: form.name,
-      email: form.email,
-      phone: form.phone,
-      company: form.company || '—',
-      service: form.service || 'General',
-      budget: form.budget || '—',
-      message: form.message,
-      _subject: `New Appointment Request — ${form.name} (${form.service || 'General'})`,
-      _template: 'table',
-      _captcha: 'false',
-    };
-
-    // Method 1: Hidden form POST
-    const hiddenForm = formRef.current;
-    if (hiddenForm) {
-      hiddenForm.innerHTML = '';
-      for (const [key, value] of Object.entries(submitData)) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value;
-        hiddenForm.appendChild(input);
-      }
-      hiddenForm.action = `https://formsubmit.co/${AGENCY.email}`;
-      hiddenForm.method = 'POST';
-      hiddenForm.target = 'booking-submit-iframe';
-      hiddenForm.submit();
-    }
-
-    // Method 2: Server-side proxy (backup with browser-like headers)
-    try {
-      await fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(submitData),
-      });
-    } catch {
-      // Ignore proxy errors — Method 1 may have succeeded
-    }
-
-    // Show success after a brief delay (let both methods fire)
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
-      setStatus('success');
-      toast.success("Appointment request sent! We'll email you within 24 hours.");
-      setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', message: '' });
-    }, 3000);
+    setStatus('success');
+    toast.success("Appointment request sent! We'll email you within 24 hours.");
+    setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', message: '' });
   };
 
   return (
@@ -100,15 +64,6 @@ export default function BookingForm({ bookingFormRef }: { bookingFormRef?: React
       ref={bookingFormRef}
       className="relative py-24 md:py-32 overflow-hidden"
     >
-      {/* Hidden form + iframe for FormSubmit (bypasses Cloudflare) */}
-      <iframe
-        ref={iframeRef}
-        name="booking-submit-iframe"
-        className="hidden"
-        aria-hidden
-        style={{ display: 'none', width: 0, height: 0, border: 0 }}
-      />
-      <form ref={formRef} className="hidden" aria-hidden style={{ display: 'none' }} />
 
       {/* CTA background */}
       <div className="absolute inset-0 pointer-events-none">

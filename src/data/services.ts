@@ -307,7 +307,7 @@ export const AGENCY = {
   ],
   email: "titechagency@gmail.com",
   phone: "+92 321 380 9420",
-  formSubmitEndpoint: "https://formsubmit.co/ajax/titechagency@gmail.com",
+  formSubmitEndpoint: "https://formsubmit.co/titechagency@gmail.com",
 };
 
 // Social media links

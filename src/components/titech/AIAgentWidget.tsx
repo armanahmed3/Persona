@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AGENCY, SERVICES, AI_QUICK_REPLIES } from '@/data/services';
+import { submitToFormSubmit } from './submitForm';
 
 type ChatMsg = { role: 'user' | 'assistant'; content: string; booking?: boolean };
 
@@ -161,10 +162,10 @@ export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void
     ]);
 
     try {
-      const res = await fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      // Submit via standard FormSubmit endpoint (hidden form POST)
+      // Uses: https://formsubmit.co/titechagency@gmail.com
+      await submitToFormSubmit(
+        {
           name: booking.name,
           email: booking.email,
           phone: booking.phone,
@@ -174,13 +175,9 @@ export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void
           message,
           _subject: `AI-Agent Booking: ${booking.name} (${booking.service})`,
           source: 'AI Agent Chat Widget',
-        }),
-      });
-      // Handle non-JSON responses gracefully
-      const text = await res.text();
-      let data: any = null;
-      try { data = JSON.parse(text); } catch { data = { success: true }; }
-      if (!res.ok && !data?.success) throw new Error(`HTTP ${res.status}`);
+        },
+        AGENCY.email
+      );
       setBooking((b) => ({ ...b, step: 6, active: false }));
       setMessages((m) => [
         ...m,
@@ -195,7 +192,7 @@ export default function AIAgentWidget({ onBookClick }: { onBookClick: () => void
         {
           role: 'assistant',
           content:
-            "I couldn't submit the form right now, but I've noted your details. Please also email hello@titechagency.com to confirm. Sorry for the hiccup!",
+            `I couldn't submit the form right now, but I've noted your details. Please also email ${AGENCY.email} to confirm. Sorry for the hiccup!`,
         },
       ]);
       setBooking(INITIAL_BOOKING);

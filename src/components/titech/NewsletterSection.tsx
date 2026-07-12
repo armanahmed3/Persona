@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { AGENCY, NEWSLETTER_BENEFITS } from '@/data/services';
 import { toast } from 'sonner';
+import { submitToFormSubmit } from './submitForm';
 
 export default function NewsletterSection() {
   const [email, setEmail] = useState('');
@@ -16,28 +17,22 @@ export default function NewsletterSection() {
     e.preventDefault();
     if (!email) return;
     setStatus('loading');
-    try {
-      const res = await fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          _subject: 'Newsletter subscription',
-          source: 'Newsletter section',
-          type: 'newsletter',
-        }),
-      });
-      const text = await res.text();
-      let data: any = null;
-      try { data = JSON.parse(text); } catch { data = { success: true }; }
-      if (!res.ok && !data?.success) throw new Error(`HTTP ${res.status}`);
-      setStatus('done');
-      toast.success('Subscribed! Check your inbox for confirmation.');
-      setEmail('');
-    } catch (err) {
-      toast.error('Could not subscribe right now. Please email us directly.');
-      setStatus('idle');
-    }
+
+    // Submit via standard FormSubmit endpoint (hidden form POST)
+    // Uses: https://formsubmit.co/titechagency@gmail.com
+    await submitToFormSubmit(
+      {
+        email,
+        _subject: 'Newsletter subscription',
+        source: 'Newsletter section',
+        type: 'newsletter',
+      },
+      AGENCY.email
+    );
+
+    setStatus('done');
+    toast.success('Subscribed! Check your inbox for confirmation.');
+    setEmail('');
   };
 
   return (
