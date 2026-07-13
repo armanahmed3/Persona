@@ -5,8 +5,8 @@ import { AGENCY, SERVICES } from '@/data/services';
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '<redacted>';
-const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY || '<redacted>';
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
+const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY || '';
 
 const SYSTEM_PROMPT = `You are "Titech", the official AI agent of Titech Agency — an AI-driven digital services agency based in the US (New York), UK (London), and UAE (Dubai).
 
