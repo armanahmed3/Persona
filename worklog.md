@@ -334,8 +334,8 @@ Work Log:
   * After:  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
   * After:  const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY || '';
 - Added both keys to /home/z/my-project/.env:
-  * OPENROUTER_API_KEY=<redacted>
-  * NVIDIA_API_KEY=<redacted>
+   * OPENROUTER_API_KEY=<redacted>
+   * NVIDIA_API_KEY=<redacted>
 - Verified .gitignore already contains .env* (line 34) — .env files are not committed
 - Scanned entire src/ directory: no hardcoded sk-or-v1- or nvapi- keys remain anywhere
 - Restarted dev server to load new env vars
